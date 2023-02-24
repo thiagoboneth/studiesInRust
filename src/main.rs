@@ -6,16 +6,17 @@ fn convert_to_int(data_input: & String) -> i32{
 }
 
 fn main() {
-    let mut number1 = String::new();
-    io::stdin().read_line(&mut number1).expect("Erro ao ler number1");
+    let mut sum = 0;
+    let mut value_entrance = String::new();
 
-    let mut number2 = String::new();
-    io::stdin().read_line(&mut number2).expect("Erro ao ler number2");
+    io::stdin().read_line(&mut value_entrance).expect("Erro na leitura do valor de entrada");
+    let mut value_i32 = convert_to_int(&value_entrance);
 
-    if convert_to_int(&number1) > convert_to_int(&number2){
-        print!("O numero {} é maior que {}", number1, number2);
+    while value_i32 != 0 {
+        let mut r = value_i32 % 10;
+        sum = sum + r;
+        value_i32 = value_i32 / 10;
     }
-    else {
-        print!("O numero {} é menor ou igual que {}", number1, number2)
-    }
+
+    print!("O valor das somas dos digitos é {}", sum);
 }
